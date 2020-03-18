@@ -2,8 +2,8 @@
 # coding: utf-8
 
 # bundle install
-# system('bundle config set path "vendor/bundle"')
-# system('bundle install')
+system('bundle config set path "vendor/bundle"')
+system('bundle install')
 
 # コンフィグ読み込み
 require './config/import.rb'
