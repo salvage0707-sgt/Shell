@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+# coding: utf-8
+
+# bundle install
+# system('bundle config set path "vendor/bundle"')
+# system('bundle install')
+
+# コンフィグ読み込み
+require './config/import.rb'
+
+# 毎回bashが読み込むbashrcファイル作成
+File.open("bashrc", 'w') do |f|
+    # ファイル宣言
+    f.puts "#!/bin/bash"
+    f.puts
+
+    # 依存性のないコマンド
+    f.puts "export PATH=$PATH:#{__dir__}/commands/common/bin"
+
+    # 使用するコマンドのみをインポート
+    CONFIG.common.use_project.each do |project|
+        f.puts "export PATH=$PATH:#{__dir__}/commands/#{project}/bin"
+    end
+end
+
+# .bashrcに読み込みファイルを指定
+bashrc_file = ENV['HOME'] + "/.bashrc"
+
+# 設定している場合は、行わない
+seted = File.readlines(bashrc_file).grep("# MY SHELL CONFIG\n")
+if seted.empty?
+    File.open(bashrc_file, 'a') do |f|
+        f.puts "# MY SHELL CONFIG"
+        f.puts "test -f #{__dir__}/bashrc && source #{__dir__}/bashrc"
+    end
+end
+

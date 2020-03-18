@@ -1,0 +1,6 @@
+# gitignore
+
+config/**/config.yml
+vendor/
+.bundle/
+bashrc

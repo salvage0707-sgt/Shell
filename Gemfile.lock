@@ -1,0 +1,19 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    color_echo (3.1.1)
+    git (1.6.0)
+      rchardet (~> 1.8)
+    hashie (4.1.0)
+    rchardet (1.8.0)
+
+PLATFORMS
+  x64-mingw32
+
+DEPENDENCIES
+  color_echo
+  git
+  hashie
+
+BUNDLED WITH
+   2.1.4
